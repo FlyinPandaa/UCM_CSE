@@ -1,0 +1,65 @@
+Psuedo Averages
+
+int avg_even, avg_odd, avg_even_count, avg_odd_count, input, input_count,;
+
+    while(input != 0){
+		int sum = 0, mod = 0, temp = 0, sum_even = 0, sum_odd = 0;
+
+        Please enter the %d input_count integer;
+        scanf("%d \n" &input);
+
+		temp = input;
+
+		while(temp){
+			mod = temp % 10;
+			sum = sum + temp;
+			temp = temp / 10;
+		}
+
+		sum = % 2;
+
+		if(sum == 0){
+			even = even + input;
+			even_count++;
+		} 
+		else{
+			odd = odd + input;
+			odd_count++;
+		}
+		
+
+        input_count++;
+    }
+
+	(Double)sum_even =  total / avg_even_count;
+
+	(dpuble)sum_odd = total / avg_odd_count;
+
+
+
+
+Zak Idea:
+int evensCount = 0
+int oddsCount = 0
+
+for loop to ask for inputs{
+	if user input == 0{ 
+	end/break for loop}
+	
+	for loop to split number into digits{
+	while number > 0
+	
+	int checker = 0
+    	int digit = number%10
+    	number /= 10
+	
+	checker = checker + digit
+	}
+	if checker %2 evens = evens + checker, evensCount++
+	if checker !%2 evens = odds + checker, oddsCount++
+	}
+}
+	float evenAv = evens%count
+	float oddAv = odds%count
+	cout >> Average for evens is (evenAv)
+	cout >> Average for odds is (oddAv)

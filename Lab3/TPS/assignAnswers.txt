@@ -1,0 +1,15 @@
+Assignment 1:
+
+1. Why do we need to pass the size of array to the function?
+
+    We need to pass in the size of the array to the bubble sort function, because we need to know how many iterations we need.
+
+2. Is the original array (the one being passed into the function) changed at the end of this function? 
+
+    Yes, because the original array is being sorted with the bubble sort algorithm.
+
+3. Why do you think a new array (s_array) is needed to store the result of the sorted values (why not 
+update the array as we sort)? Hint: look at what the main function does. 
+
+    We are printing out both the original and sorted array in separate lines.
+
