@@ -27,7 +27,7 @@ int main() {
 
 	printf("For four_ints: \n");
 	for(i = 0; i < 4; i++){
-		printf("%x\n", *(four_ints + i));		
+		printf("%x\n", *(four_ints + i));			
 		printf("%p\n", (four_ints + i));
 	}
 
