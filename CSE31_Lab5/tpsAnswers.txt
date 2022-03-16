@@ -52,7 +52,7 @@ TPS 2
 1. What do the .data, .word, .text directives mean (i.e., what do you put in each section)? 
 
     The data loads up data that the assembler can use. Word creates an array for the assembler to load the values into.
-    The text directives allows for text to be printed.
+    The text directives loads the available instructions.
 
 2. What does line 10 do? 
 
@@ -81,7 +81,7 @@ while running the program?
 7. At what address is n stored in memory? Calculate the 13th fib number by modifying this memory 
 location. 
 
-
+    The n is stored in the memory location, 0x00400008. 13th fib number is stored in the 144.
  
 8. Line 19 and 21 use the syscall instruction. What is it and how do you use it? 
 
