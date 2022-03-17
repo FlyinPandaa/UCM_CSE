@@ -7,6 +7,10 @@
 void printPuzzle(char** arr);
 void searchPuzzle(char** arr, char* word);
 int bSize;
+int** finishedArr;
+int wordSize =0;
+int wordNum = 0;
+int isFound = 0;
 
 // Main function, DO NOT MODIFY 	
 int main(int argc, char **argv) {
@@ -50,6 +54,8 @@ int main(int argc, char **argv) {
     
     // Call searchPuzzle to the word in the puzzle
     searchPuzzle(block, word);
+
+    
     
     return 0;
 }
@@ -68,6 +74,66 @@ void printPuzzle(char** arr) {
 	}
 }
 
+int puzzleLoop(char **arr, char *word, int row, int column){
+    wordSize = strlen(word);
+
+    // Check if the first letter is found or not
+    if(wordNum == 0){
+        // Nested for loop to traverse the array, but this time it's going to be after the first letter is found
+        for(int i = 0; i < bSize; i++){
+            for(int j = 0; j < bSize; j++){
+                // 
+                if(*(*(arr + i) + j) == *word ){
+                    wordNum++;
+
+                    if((puzzleLoop(arr, word, i, j)) == 1){
+                        *(*(finishedArr + i) + j) = *(*(finishedArr + i) + j) * 10 + wordNum; 
+
+                        wordNum--;
+                        isFound = 1;
+
+                    }
+                } 
+            }
+        }
+    // If first letter is found, look for all the other letters in a 3 by 3 square
+    } else {
+        // Nested for loop to traverse the array, but this time it's going to be after the first letter is found
+        for(int i = row-1; i <= row+1; i++){
+            for(int j = column-1; j <= column+1; j++){
+                if(wordNum >= wordSize){
+                    return 1;
+                }
+                if(i != -1 && j != -1 && i <= bSize && j <= bSize && !(i == row && j == column)){
+                    if(*(*(arr + i) + j) == *(word + wordNum)){
+                        wordNum++;
+
+                        if(puzzleLoop(arr, word, i, j) == 1){
+                            *(*(finishedArr + i) + j) = *(*(finishedArr + i) + j) * 10 + wordNum; 
+
+                            wordNum--;
+                            return 1;
+                        }
+                    }
+
+                }
+            }
+        }
+
+    }
+    wordNum--;
+    return -1;
+}
+
+void printIntegerArray(int **arr){
+    for(int i = 0; i < bSize; i++){
+		for(int j = 0; j < bSize; j++){
+			printf("%d,    ", *(*(arr + i) + j));
+		}
+		printf("\n");
+	}
+}
+
 void searchPuzzle(char** arr, char* word) {
     // This function checks if arr contains the search word. If the 
     // word appears in arr, it will print out a message and the path 
@@ -75,4 +141,27 @@ void searchPuzzle(char** arr, char* word) {
     // different message as shown in the sample runs.
     // Your implementation here...
 
+    finishedArr = (int**)malloc(bSize * sizeof(int*));
+    
+	for(int i = 0; i < bSize; i++){
+		*(finishedArr + i) = (int*)malloc(bSize * sizeof(int));
+		for(int j = 0; j < bSize; j++){
+			*(*(finishedArr + i) + j) = 0;
+		}
+	}
+
+    word = strupr(word);
+
+    puzzleLoop(arr, word, 0, 0);
+
+    if(isFound == 1){
+        printf("\n");
+        printf("Word found\n");
+        printf("Printing the result: \n");
+        printIntegerArray(finishedArr);
+    } else {
+        printf("Word not found\n");
+    }
 }
+
+
