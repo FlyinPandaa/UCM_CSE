@@ -76,11 +76,11 @@ void printPuzzle(char** arr) {
 
 int puzzleLoop(char **arr, char *word, int row, int column){
     //Length of the word
-    wordSize = strlen(word);
+    wordSize = strlen(word);    
 
-    // Check if the first letter is found or not
+    // Check if the first letter is found or not    
     if(wordNum == 0){
-        // Nested for loop to traverse the array, but this time it's going to be after the first letter is found
+        // Nested for loop to traverse the array
         for(int i = 0; i < bSize; i++){
             for(int j = 0; j < bSize; j++){
                 // 
@@ -144,7 +144,7 @@ void searchPuzzle(char** arr, char* word) {
 
     finishedArr = (int**)malloc(bSize * sizeof(int*));
     
-    //Creates array and sets everything to 0
+    // Creates array and sets everything to 0
 	for(int i = 0; i < bSize; i++){
 		*(finishedArr + i) = (int*)malloc(bSize * sizeof(int));
 		for(int j = 0; j < bSize; j++){
@@ -152,6 +152,7 @@ void searchPuzzle(char** arr, char* word) {
 		}
 	}
 
+    // Makes the word case-insensitive
     word = strupr(word);
 
     puzzleLoop(arr, word, 0, 0);
@@ -166,5 +167,3 @@ void searchPuzzle(char** arr, char* word) {
         printf("Word not found\n");
     }
 }
-
-
