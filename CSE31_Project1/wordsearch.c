@@ -75,6 +75,7 @@ void printPuzzle(char** arr) {
 }
 
 int puzzleLoop(char **arr, char *word, int row, int column){
+    //Length of the word
     wordSize = strlen(word);
 
     // Check if the first letter is found or not
@@ -104,7 +105,7 @@ int puzzleLoop(char **arr, char *word, int row, int column){
                 if(wordNum >= wordSize){
                     return 1;
                 }
-                if(i != -1 && j != -1 && i <= bSize && j <= bSize && !(i == row && j == column)){
+                if(i >= 0 && j >= 0 && i < bSize && j < bSize && !(i == row && j == column)){
                     if(*(*(arr + i) + j) == *(word + wordNum)){
                         wordNum++;
 
@@ -143,6 +144,7 @@ void searchPuzzle(char** arr, char* word) {
 
     finishedArr = (int**)malloc(bSize * sizeof(int*));
     
+    //Creates array and sets everything to 0
 	for(int i = 0; i < bSize; i++){
 		*(finishedArr + i) = (int*)malloc(bSize * sizeof(int));
 		for(int j = 0; j < bSize; j++){
@@ -154,6 +156,7 @@ void searchPuzzle(char** arr, char* word) {
 
     puzzleLoop(arr, word, 0, 0);
 
+    // isFound is a global variable that will be set to one when the search is successful
     if(isFound == 1){
         printf("\n");
         printf("Word found\n");
