@@ -54,3 +54,5 @@ SUB:	la $t0, b
 
 		
 END:
+		li $v0, 10
+		syscall
