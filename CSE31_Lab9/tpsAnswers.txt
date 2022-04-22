@@ -1,120 +1,125 @@
 1. Download “MIPS_Reference_Sheet” from CatCourses. We will need to refer to this sheet to 
 complete all the exercises in this lab. 
 
-
+    Done.
 
 2. Load proc1.s in MARS and study the code. This is similar to compare.s from Lab 06. 
 
-
+    Done.
 
 3. After assembling the program, study the Text Segment window and see how your source code is 
 translated into True Assembly Language (Basic) as well as machine code (Code). 
 
-
+    Done.
 
 4. In true assembly language, every single instruction can be translated into a machine instruction. How 
 many bits does a machine instruction contain?  
 
-
+    Basic machine instructions take 32 bits, or 4 bytes.
 
 5. To utilize the limited number of bits efficiently, all machine instructions are categorized into different 
 types (or formats). How many types are there? What are they? Give 2 operations for each type as 
 examples. 
 
-
+    The three different format are: i-format, r-format, and j-format.
 
 6. Now, locate the instruction in line #7 of proc1.s. Let us translate this instruction into machine code.  
 
     a. What instruction type is this? How many fields does this type of instruction have? What are the 
     names of these fields? 
 
-
+        Line 7 is an i-format instruction, and has four fields: destination field, source field, immediate field, and opcode.
 
     b. Refer to the MIPS sheet, what is the value of the opcode of this instruction in hex? What register 
     is rs? What is the value of this register in hex? What register is rt? What is the value of this register 
     in hex? What is the value of immediate in hex? 
 
-
+        Opcode value in hex for line #7 is 8. The rs is at register $s0. The value of the register is 10(hex). The rt is at register $zero, and it's hex value is 0. Value of the immediate
+        is 19.
 
     c. Construct the machine code of line #7 using the values obtained from part b. Write your answer in 
     both binary and hex formats. You can verify your answer with the Code column in Text Segment 
     window. 
 
-
+        Binary format: 001000 00000 10000 0000000000011001
+        Hex format: 0x20100019
 
 7. Now, let us convert a machine code to a MIPS instruction. Locate address 0x00400010 from the Text 
 Segment window.  
 
     a. What is the machine code at this address in hex? Convert this code into binary.
 
-
+        The machine code at this address in hex is 0x0230402a. In binary that is 000000 10001 10000 01000 00000 101010.
 
     b. From the binary version of this machine code. What is the instruction type? How can you tell? How 
     many fields are there in this instruction type? What are the names of these fields? 
 
-
+         The instruction type is R-format, because of the reference sheet and the front 6 bits being 0. In this instruction type, there are 6 types of fields; opcode, rs, rt, rd, shamt, and funct.
 
     c. According to the binary machine code, what is the value of each field in hex? 
 
-
+        The following is  the value of each field in hex: opcode = 0, rs = 11, rt = 10, rd = 8, shamt = 0, funct = 2a
 
     d. Refer to the MIPS sheet, what operation is this instruction? How can you tell? What is the mapping 
     of the registers being used in this instruction?
 
-
+        This operation is slt. You are using $s1, $s0, and $t0.
 
     e. What is the final MIPS instruction? Is it the same as the Source Column in the Text Segment 
     window? 
 
-
+        The final operation is slt $t0 $s1 $s0.
 
 8. Now, let us take a look at line #17 of proc1.s.  
 
     a. What format is this instruction? 
 
-
+        The format of the bne instruction is i-format.
 
     b. What are the values of opcode, rs, and rt of this instruction in hex? 
 
-
+        These are the following values: opcode = 0, rs = 8, rt = 0.
 
     c. What is the name of the target label if it takes the branch? What is the address of this label in hex? 
     (Hint: you can find it in the Text Segment window.) 
 
-
+        Name of target label is LESS, address of this label in hex is 0x0040001c.
 
     d. So, do we put this address as the value of the immediate field of the instruction? Why? 
 
-
+        No, since we can't fit a 32 bit address into a 16 bit.
 
     e. How do we find the value of the immediate field? What is this value? 
 
-
+        The relative address can be found by counting the number of lines between the call instruction until we reach the branch location, for this example, 1. It is 0000000000000001
+        in binary and 1 in hex.
 
     f. What is the machine code of this instruction in binary and hex formats? Does your answer match 
     the Code column in the Text Segment window? 
 
-
+        Binary = 000101 01000 000000000000000000001, Hex = 0x15000001
 
 9. Finally, let us convert the j instruction in line #20.  
 
     a. What format is this instruction? How many fields are there in this format? 
 
-
+        This instruction is in J-format. There are only 2 fields for this type of instruction.
 
     b. What is the opcode of this instruction in hex?
 
-
+        The opcode for this instruction is: 2.
 
     c. To what label and address does this instruction jump? 
 
-
+        This instruction jumps to label 'GREQ' at address 0x00400030.
 
     d. How many bits can you use in the address field of the instruction? How can we “squeeze” the 
     address into this field? What are the reasons behind this approach? What is the value of the 
     address field in binary? 
 
-
+        You are able to use 26 bits for the address label. The value in binary is 00000100000000000000001100.
     
     e. What is the machine code of this instruction in binary and hex? Is it the same as what’s in the 
     Code Column of the Text Segment window? 
+
+        Binary: 000010 00000100000000000000001100, Hex:  0x0810000c

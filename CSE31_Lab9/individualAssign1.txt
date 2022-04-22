@@ -1,0 +1,35 @@
+Line #7:
+    Machine Code: 
+        001000(opcode) + 00000(rs) + 10000(rt) + 1111111111110001(immediate) --> 001000 00000 10000 1111111111110001
+    MIPS Instruction:
+        First, we place 'addi' because it isn't an abbreviated operation. We then look at the MIPS reference sheet and see that $zero is stored in register number 0, so we place a $0. 
+        Then, we see that the end result register is $s0, or $16 in register number, so we place that after $0. Finally, we have the immediate value, which, in hex, is the expressed as -15. 
+        
+        End result: addi $0 $16 -15
+
+Line #14
+    Machine Code:
+        101010(opcode) + 01000(rs) + 10100(rt) + 00000(rd) + 01010(shamt) + 100000(funct) --> 101010 01000 10100 00000 01010 100000
+    MIPS Instruction:
+        First, we place 'slt' since it isn't an abbreviated operation. We then look at the MIPS reference sheet and see that $s0 is still stored in register number 16, so we place $16. 
+        Then, we see that the rt register is at the next register, $s1, meaning that the register number is 17, so we place a $17. Finally, we see that the rd register is $t0, which is at 
+        register number 8. 
+        
+        End result: slt $16 $17 $8
+
+Line #17
+    Machine Code:
+        000100(opcode) + 00100(rs) + 00000(rt) + 0000000000000110(immediate) --> 000100 00100 00000 0000000000000110
+    MIPS Instruction:
+        First, we place 'beq' because it isn't an abbreviation. Then, we look at the rs register $t0 (which is at register number 8). After that, we see that $zero is the rt, with register 
+        number 0. Finally, we see that the immediate is 6. 
+        
+        End Result: beq $8 $0 6
+
+Line #20
+    Machine Code:
+        000010(opcode) + 00000100000000000000000111(immediate) --> 000010 00000100000000000000000111
+    MIPS Instruction:
+         First, we place a 'j' because it isn't an abbreviation. Then place the immediate, which in this case is the location of the jump point, which is 0x0040001c in hexadecimal. 
+         
+         End Result: j 0x0040001c
