@@ -13,7 +13,7 @@ and instructions?
 
 4. Are the caches direct-mapped or set associative? If set associative, how many ways? 
 
-   Yes it is set associative, and the l1 cache is 8-way, L2 is 4-way, and L3 is 16-way.
+   Yes it is set associative, and the L1 cache is 8-way, L2 is 4-way, and L3 is 16-way.
 
 5. With L1 data cache, how many tag bits, index bits, and offset bits?
 
