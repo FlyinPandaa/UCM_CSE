@@ -5,7 +5,7 @@ and instructions?
 
 2. How big is each level of cache? 
 
-    The size of the 3 levels of cache is the following L1 cache is 6x32 bytes, L2 cache is 6x256kb, and L3 cache is 12mb.
+    The size of the 3 levels of cache is the following L1 cache is 6x32 kb, L2 cache is 6x256kb, and L3 cache is 12mb.
 
 3. What is the block size (sometimes it is called line size)?
 

@@ -26,9 +26,9 @@ value of the offset bits from an address, we know which column of a block we are
 Given the block size of a cache is 16B (bytes), how many bits do we need for offset? What is the 
 number of bits in offset as a function of block size? Is it practical to have a cache of block size = 1 byte? 
 
-    It would be 2^n = 16b, so then n(the offset) would be 4 bits. Number  of  bits in offset as a function of block size is 2 bits. 
-    Mainly depends on how much data is being stored, and having a larger block size (up to a certain point) is ideal. That being said, 
-    it can be practical if the amount of data is small or if there are a lot of blocks.
+    First divide 16/4 = 4. Then it would be 2^n = 4b, so then n(the offset) would be 2 bits. Number of bits in offset as a function of block 
+    size is 4 bits. Mainly depends on how much data is being stored, and having a larger block size (up to a certain point) is ideal. That being 
+    said, it can be practical if the amount of data is small or if there are a lot of blocks.
 
 5. Index bits tell us how many blocks there are in a cache. These bits are the next right-most bits of the 
 memory address after the offset bits. You can consider this as the number of blocks (rows) of data 
@@ -36,7 +36,8 @@ in a cache. With a specific value of the index bits from an address, we know whi
 trying to access. Given there are 64 blocks in a cache, how many index bits do we need? What is the 
 number of bits in index as a function of number of blocks? 
 
-    We would have the following function: 2^n = x and n = index bits. So in this case, it would be 64 * 16 = 1024 index bits.
+    We would have the following function: 2^n = 64 and n = index bits. So in this case, it would be 2^6 = 64. The number of bits in index as a
+    a function of number of blocks is: 6 bits.
 
 6. Once you know the number of blocks and the block size of a cache, do you know the total size of the 
 cache? How? 
@@ -47,13 +48,14 @@ cache? How?
 and index of a cache will be less than the number of bits in an address of the main memory. What do we 
 do to the left-over bits from the address? Why are they important? 
 
-    The left over bits are the tag which tells us where the data will be written/loaded into.
+    The left over bits are the tag which tells us where the data will be written/loaded into, and can help tell us where to write if there is
+    is the same tag.
 
 8. Given a memory address of 20 bits (during Intel 8086 era), 128B of direct-mapped cache, and 8B 
 block size, answer the following questions: 
     a. How big is this main memory? 
 
-        2^20 = 1,048,576 
+        2^20 = 1,048,576 bits
 
     b. How many offset bits? 
 
@@ -61,15 +63,15 @@ block size, answer the following questions:
 
     c. How many blocks are there in the cache? 
 
-        128 bytes
+        128/8 = 16 blocks
 
     d. How many index bits? 
 
-        2^n = 128; n(index bits) = 7
+        2^n = 128; n(index bits) = 7 bits
 
     e. How many tag bits? 
 
-        There would be 10 tag bits.
+        Tag equation is the following: T= a - b - d. So then for this case it would be: 20-3-7 = 10 bits. There would be 10 tag bits.
 
     f. Draw the layout of the cache: including tags, valid bits, dirty bits, and data blocks.
 
@@ -111,27 +113,27 @@ associativity?
 answer the following questions: 
     a. How big is this main memory? 
 
-
+        2^20 = 1,048,576 bits
 
     b. How many offset bits? 
 
-
+        2^n = 8 byte n = 3 bits
 
     c. How many blocks are there in the cache? 
 
-
+        256/8 = 32 bytes
 
     d. How many sets are there in the cache? 
 
-
+        32KB/32B = 1k sets
 
     e. How many index bits? 
 
-
+        2^n = 256 ; n = 8 bits 
 
     f. How many tag bits? 
 
-
+        t = 20 - 3 - 8 = 9 bits
 
     g. Draw the layout of the cache: including tags, valid bits, dirty bits, and data blocks. Indicate the sets 
     with a different color (or a thicker) boarder. 
@@ -141,5 +143,5 @@ answer the following questions:
     h. What is the number of bits per row of the cache (number of bits being used in a row: tag, valid bit, 
     dirty bits, and data block)? 
 
-
+        There is 32 bits per row.
     
