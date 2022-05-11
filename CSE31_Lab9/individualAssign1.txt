@@ -11,36 +11,36 @@ Line #7:
 
 2.	Convert slt $t0, $s0, $s1 to machine code:
 
-a.	slt is an R-Type instruction, which means it has the six fields:
-i.	opcode: 00 0000
-ii.	rs: 1 0000
-iii.	rt: 1 0001
-iv.	rd: 0 1000
-v.	shamt: 0 0000
-vi.	funct: 10 1010
+    a.	slt is an R-Type instruction, which means it has the six fields:
+        i.	opcode: 00 0000
+        ii.	rs: 1 0000
+        iii.rt: 1 0001
+        iv.	rd: 0 1000
+        v.	shamt: 0 0000
+        vi.	funct: 10 1010
 
-b.	Machine instruction:
-i.	Binary: 0000 0010 0001 0001 0100 0000 0010 1010 
-ii.	Hexadecimal: 0x0211402A
+    b.	Machine instruction:
+        i.	Binary: 0000 0010 0001 0001 0100 0000 0010 1010 
+        ii.	Hexadecimal: 0x0211402A
 
 3.	Convert beq $t0, $zero, LEEQ
 
-a.	beq is an I-Type instruction, which means it has four fields:
-i.	opcode -> beq: 00 0100
-ii.	rs -> $t0: 0 1000
-iii.	rt -> $zero: 0 0000 
-iv.	immediate: 0000 0000 0000 0110
+    a.	beq is an I-Type instruction, which means it has four fields:
+        i.	opcode -> beq: 00 0100
+        ii.	rs -> $t0: 0 1000
+        iii.	rt -> $zero: 0 0000 
+        iv.	immediate: 0000 0000 0000 0110
 
-b.	Machine instruction:
-i.	Binary: 0001 0001 0000 0000 0000 0000 0000 0110
-ii.	Hexadecimal: 0x11000006
+    b.	Machine instruction:
+        i.	Binary: 0001 0001 0000 0000 0000 0000 0000 0110
+        ii.	Hexadecimal: 0x11000006
 
 4.	Convert j GRT to machine code:
 
-a.	j is a J-Type instruction, which means it has two fields:
-i.	opcode -> j: 00 0010
-ii.	immediate: 00 0001 0000 0000 0000 0000 0111 
+    a.	j is a J-Type instruction, which means it has two fields:
+        i.	opcode -> j: 00 0010
+        ii.	immediate: 00 0001 0000 0000 0000 0000 0111 
 
-b.	Machine instruction:
-i.	Binary: 0000 1000 0001 0000 0000 0000 0000 0111
-ii.	Hexadecimal: 0x08100007
+    b.	Machine instruction:
+        i.	Binary: 0000 1000 0001 0000 0000 0000 0000 0111
+        ii.	Hexadecimal: 0x08100007

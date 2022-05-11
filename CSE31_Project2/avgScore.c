@@ -7,7 +7,7 @@ void selSort(int len) {
     int i, j, temp;
     for (int i = 0; i < len; ++i) {
         sorted[i] = orig[i];
-    }
+    }       
     for (i = 0; i < len - 1; i++) {
         // Find the max element in sorted[i..len-1].
         int maxIndex = i;                   // Assume 1st element in sorted[i..len-1] is the max.
@@ -16,7 +16,7 @@ void selSort(int len) {
                 maxIndex = j;               // Found new max. Remember its index.
             }
         }
-        // Swap max element in sorted[i..len-1] and with the first element in sorted[i..len-1].
+        // Swap max element in sorted[i..len-1] and with th e first element in sorted[i..len-1].
         temp = sorted[maxIndex];
         sorted[maxIndex] = sorted[i];
         sorted[i] = temp;
